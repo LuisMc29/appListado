@@ -1,21 +1,22 @@
 package com.example.listadotareas.view
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.listadotareas.R
+import com.example.listadotareas.databinding.FragmentRegisterBinding
+import com.example.listadotareas.utils.FragmentComunicator
+import com.example.listadotareas.viewModel.SignUpViewModel
 
-/**
- * A simple [Fragment] subclass.
- * Use the [register.newInstance] factory method to
- * create an instance of this fragment.
- */
 class register : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentRegisterBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel by viewModels<SignUpViewModel>()
+    private lateinit var communicator: FragmentComunicator
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,26 +28,23 @@ class register : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+    ): View {
+
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        setupView()
+        return binding.root
+
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment register.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            register().apply {
-                arguments = Bundle().apply {
-                }
-            }
+    private fun setupView() {
+        binding.imageButton2.setOnClickListener {
+            findNavController().navigate(R.id.action_register_to_login)
+        }
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
