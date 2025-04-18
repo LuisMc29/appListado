@@ -18,6 +18,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/nav_graph"/>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loaderContainerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="gone">
+
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/view"
         android:layout_width="128dp"
@@ -30,5 +37,6 @@
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/gato"
         android:visibility="gone"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

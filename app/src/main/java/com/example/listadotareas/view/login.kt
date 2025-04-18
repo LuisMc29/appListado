@@ -31,8 +31,7 @@ class login : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         setupView()
-       /* setupObservers()
-        */
+        setupObservers()
         return binding.root
     }
 
@@ -41,12 +40,10 @@ class login : Fragment() {
         binding.textView4.setOnClickListener {
             findNavController().navigate(R.id.action_login_to_register)
         }
+
         binding.btnLogin.setOnClickListener {
             if (isValid) {
-                /*
                 requestLogin()
-
-                 */
             } else {
                 Toast.makeText(activity, "Ingreso invalido", Toast.LENGTH_SHORT).show()
             }
@@ -68,6 +65,26 @@ class login : Fragment() {
             }
         }
     }
+
+    private fun setupObservers(){
+    viewModel.loaderState.observe(viewLifecycleOwner){ loaderState ->
+        communicator.showLoader(loaderState)
+    }
+    viewModel.sessionValod.observe(viewLifecycleOwner){ validSesion ->
+        if(validSesion){
+
+        }else{
+            Toast.makeText(activity, "Ingreso invalido", Toast.LENGTH_SHORT).show()
+        }
+    }
+    }
+
+
+    private fun requestLogin(){
+    viewModel.requestSingIn(binding.Itcorreo.text.toString(),
+        binding.Itcontrasenia.text.toString())
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
