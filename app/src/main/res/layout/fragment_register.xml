@@ -37,6 +37,7 @@
         android:layout_marginTop="16dp"
         android:contentDescription="iconReturn"
         android:src="@drawable/arrow_back_24px"
+        android:background="#BD5757"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
