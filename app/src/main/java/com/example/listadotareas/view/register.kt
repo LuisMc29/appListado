@@ -25,11 +25,10 @@ class register : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        communicator = requireActivity() as MainActivity
         setupView()
         return binding.root
     }
-
-
 
 
     private fun setupView() {
@@ -40,7 +39,6 @@ class register : Fragment() {
         binding.btnRegister.setOnClickListener{
             viewModel.requestSingUp(binding.Itcorreo2.text.toString(),
                     binding.Itcontrasenia2.text.toString())
-            //findNavController().navigate(R.id.action_register_to_login)
         }
 
         binding.Itnombre.addTextChangedListener{

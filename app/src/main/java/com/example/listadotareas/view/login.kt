@@ -1,5 +1,6 @@
 package com.example.listadotareas.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.listadotareas.R
 import com.example.listadotareas.databinding.FragmentLoginBinding
+import com.example.listadotareas.home.ListActivity
 import com.example.listadotareas.viewModel.SignInViewModel
 import com.example.listadotareas.utils.FragmentComunicator
 
@@ -31,6 +33,7 @@ class login : Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         setupView()
+        communicator = requireActivity() as MainActivity
         setupObservers()
         return binding.root
     }
@@ -72,7 +75,9 @@ class login : Fragment() {
     }
     viewModel.sessionValod.observe(viewLifecycleOwner){ validSesion ->
         if(validSesion){
-
+            val intent = Intent(activity, ListActivity::class.java)
+            startActivity(intent)
+            activity?.finish()
         }else{
             Toast.makeText(activity, "Ingreso invalido", Toast.LENGTH_SHORT).show()
         }

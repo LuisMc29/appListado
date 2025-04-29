@@ -10,6 +10,9 @@ import com.example.listadotareas.R
 import android.view.View
 import com.example.listadotareas.databinding.ActivityMainBinding
 import com.example.listadotareas.utils.FragmentComunicator
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.initialize
 
 class MainActivity : AppCompatActivity(), FragmentComunicator {
 
