@@ -15,10 +15,8 @@ import com.example.listadotareas.databinding.FragmentPendientesBinding
 class PendientesFragment : Fragment() {
 
     private var _binding: FragmentPendientesBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,8 +24,14 @@ class PendientesFragment : Fragment() {
     ): View {
 
         _binding = FragmentPendientesBinding.inflate(inflater, container, false)
+        setupView()
         return binding.root
+    }
 
+    private fun setupView(){
+        binding.btnAdd.setOnClickListener {
+            findNavController().navigate(R.id.action_pendientesFragment_to_tareasFragment)
+        }
     }
 
 
