@@ -3,8 +3,11 @@ package com.example.listadotareas.model
 import java.util.UUID
 
 data class Tarea(
-    val id: String = UUID.randomUUID().toString(),
-    val nombre: String,
-    val descripcion: String,
-    val fecha: String
-)
+    var id: String = UUID.randomUUID().toString(), // Mantiene la generación automática de ID
+    var nombre: String = "",
+    var descripcion: String = "",
+    var fecha: String = ""
+) {
+    constructor() : this("", "", "", "") // Constructor sin argumentos
+}
+
